@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.9'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.grpc:grpc-stub:1.52.1'
+    implementation 'io.grpc:grpc-protobuf:1.52.1'
+    runtimeOnly 'io.grpc:grpc-netty:1.52.1'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // import libs/grpc-server-0.0.1-SNAPSHOT-plain.jar
+    implementation files('libs/grpc-server-0.0.1-SNAPSHOT-plain.jar')
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
